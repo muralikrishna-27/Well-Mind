@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope & Support - WellMind Suicide Prevention Resources</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <style>
+        /* Emergency Banner */
+.emergency-banner {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 2rem;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.emergency-contacts {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.contact-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Hope Section */
+.hope-section {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.hope-message {
+    max-width: 800px;
+    margin: 2rem auto;
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+/* Stories Grid */
+.stories-grid {
+    margin: 3rem 0;
+}
+
+.story-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.story-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.author {
+    color: #666;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+/* Reasons Grid */
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.reason-card {
+    background-color: #e3f2fd;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* Resources Section */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.resource-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.resource-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.resource-link:hover {
+    background-color: #2980b9;
+}
+
+/* Coping Strategies */
+.strategies-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.strategy {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .emergency-contacts {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+}
+
+/* Accessibility */
+.resource-link:focus,
+.footer-links a:focus {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Animation */
+.reason-card {
+    transition: transform 0.3s ease;
+}
+
+.reason-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Print styles */
+@media print {
+    .emergency-banner {
+        border: 2px solid #000;
+        color: #000;
+        background-color: #fff;
+    }
+
+    .resource-link {
+        border: 1px solid #000;
+        color: #000;
+    }
+}
+/* Footer */
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+.emergency-banner1 {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar fixed-top">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            <span class="logo-text">Well Mind</span>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#games" class="active">Games</a></li>
+            <li><a href="resources.html" class="active">Resources</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+            
+            
+        </ul>
+        
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="emergency-banner" style="padding-top: 150px;">
+        <h2>You Are Not Alone - Help Is Available 24/7</h2>
+        <div class="emergency-contacts">
+            <div class="contact-item">
+                <h3>988 Suicide & Crisis Lifeline</h3>
+                <p>Call or Text 988</p>
+            </div>
+            <div class="contact-item">
+                <h3>Crisis Text Line</h3>
+                <p>Text HOME to 741741</p>
+            </div>
+            <div class="contact-item">
+                <h3>Emergency Services</h3>
+                <p>Call 911</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="hope-section">
+            <h1>Finding Hope: Your Life Matters</h1>
+            <div class="hope-message">
+                <p>If you're thinking about suicide, please know that you're not alone. Your life has value, and there are people who want to help. These feelings are temporary, and with support, things can get better.</p>
+            </div>
+        </section>
+
+        <section class="stories-grid">
+            <h2>Stories of Hope and Recovery</h2>
+            <div class="story-cards">
+                <article class="story-card">
+                    <h3>Finding Light in the Darkness</h3>
+                    <p>"I never thought I'd make it past 25. Now at 35, I'm helping others find their way through depression. The pain doesn't last forever, and asking for help was the bravest thing I ever did."</p>
+                    <p class="author">- Sarah, Mental Health Advocate</p>
+                </article>
+
+                <article class="story-card">
+                    <h3>One Step at a Time</h3>
+                    <p>"Recovery isn't linear. Some days were harder than others, but each small step forward mattered. Reaching out to a therapist changed everything for me."</p>
+                    <p class="author">- Michael, Recovery Coach</p>
+                </article>
+
+                <article class="story-card">
+                    <h3>Tomorrow Needs You</h3>
+                    <p>"I'm grateful every day that I'm still here. The world is better with you in it, even if it doesn't feel that way right now. Keep holding on."</p>
+                    <p class="author">- James, Suicide Prevention Speaker</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="reasons-section">
+            <h2>Reasons to Stay</h2>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <h3>You Are Stronger Than You Know</h3>
+                    <p>The fact that you're still here, still fighting, shows incredible strength. Every day you survive is a victory.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>Things Can Get Better</h3>
+                    <p>Depression lies to you about the future. With help and support, people do recover and find joy again.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>You Matter More Than You Realize</h3>
+                    <p>Your presence in this world impacts others in ways you might not see. You are valuable and irreplaceable.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>This Feeling Is Temporary</h3>
+                    <p>Suicidal thoughts are intense but temporary. Give yourself time to get through this difficult period.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="resources-section">
+            <h2>Helpful Resources</h2>
+            <div class="resources-grid">
+                <article class="resource-card">
+                    <h3>Understanding Suicidal Thoughts</h3>
+                    <p>Learn about the warning signs, risk factors, and how to cope with suicidal thoughts.</p>
+                    <a href="https://my.clevelandclinic.org/health/articles/suicide" class="resource-link">Read More</a>
+                </article>
+
+                <article class="resource-card">
+                    <h3>Safety Planning Guide</h3>
+                    <p>Create a personal safety plan to help you through difficult moments.</p>
+                    <a href="SafetyPlanningGuide.pdf" class="resource-link">Download Guide</a>
+                </article>
+
+                <article class="resource-card">
+                    <h3>Finding Professional Help</h3>
+                    <p>Guide to finding therapists, counselors, and support groups in your area.</p>
+                    <a href="#" class="resource-link">Find Help</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="coping-strategies">
+            <h2>Immediate Coping Strategies</h2>
+            <div class="strategies-list">
+                <div class="strategy">
+                    <h3>1. Wait 24 Hours</h3>
+                    <p>Give yourself one day. Use this time to reach out for help and remember that feelings change.</p>
+                </div>
+                <div class="strategy">
+                    <h3>2. Reach Out to Someone</h3>
+                    <p>Call a friend, family member, or crisis hotline. You don't have to go through this alone.</p>
+                </div>
+                <div class="strategy">
+                    <h3>3. Focus on Small Things</h3>
+                    <p>Think about small reasons to stay: a pet, an upcoming event, or simply seeing tomorrow's sunrise.</p>
+                </div>
+                <div class="strategy">
+                    <h3>4. Create Distance</h3>
+                    <p>Remove yourself from harmful items and situations. Go to a safe place with other people.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="emergency-banner1">
+            <h3>Need Immediate Help?</h3>
+            <p>24/7 Crisis Hotline: 988 | Text HOME to 741741</p>
+        </div>
+        <div class="footer-content">
+            <p>&copy; 2024 WellMind. Supporting mental wellness through technology.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/02/22/01/20250222011935-SP6NHPGM.js"></script>
+</body>
+</html>

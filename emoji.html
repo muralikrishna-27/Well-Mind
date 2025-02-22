@@ -1,0 +1,177 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindWell - Emoji Catcher Game</title>
+    <link rel="icon" href="https://i.ibb.co/M6KTWnf/pic.jpg">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <style>
+        body {
+  background: rgb(10, 10, 10);
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.scores-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.total-score {
+  margin-right: 20px;
+  margin: 20px;
+  text-align: center;
+  background: #ccc;
+  padding: 20px;
+  color: #000;
+}
+
+.time {
+  margin-right: 20px;
+  margin: 20px;
+  text-align: center;
+  background: #ccc;
+  padding: 20px;
+  color: #000;
+}
+
+.grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(36, 36, 36);
+  margin-top: 2rem;
+  padding: 20px;
+}
+
+.square {
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  background: rgb(61, 61, 61);
+}
+
+/* JavaScript */
+.emoji {
+  background-image: url("https://i.guim.co.uk/img/media/a1b7129c950433c9919f5670c92ef83aa1c682d9/55_344_1971_1183/master/1971.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=88ba2531f114b9b58b9cb2d8e723abe1");
+  background-position: center;
+  background-size: cover;
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar fixed-top">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            <span class="logo-text">Well Mind</span>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html" class="active">Games</a></li>
+            <li><a href="resources.html" class="active">Resources</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+            
+        </ul>
+        
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <div class="scores-container" style="padding-top: 70px;">
+        <h2>Emoji Catcher:</h2>
+      <div class="total-score">
+        <h2>Your Score:</h2>
+        <h2 id="score">0</h2>
+      </div>
+
+      <div class="time">
+        <h2>Time left:</h2>
+        <h2 id="time-left">60</h2>
+      </div>
+    </div>
+
+    <div class="grid-container">
+      <div class="grid">
+        <div class="square" id="1"></div>
+        <div class="square" id="2"></div>
+        <div class="square" id="3"></div>
+        <div class="square" id="4"></div>
+        <div class="square" id="5"></div>
+        <div class="square" id="6"></div>
+        <div class="square" id="7"></div>
+        <div class="square" id="8"></div>
+        <div class="square" id="9"></div>
+        <div class="square" id="10"></div>
+      </div>
+    </div>
+
+    <script>
+const squares = document.querySelectorAll(".square");
+const timeLeft = document.querySelector("#time-left");
+const score = document.querySelector("#score");
+
+let result = 0;
+let hitPosition;
+let currentTime = 60;
+let timerId = null;
+let countDownTimerId = null; // Store the countdown timer ID
+
+function randomSquare() {
+  squares.forEach((square) => {
+    square.classList.remove("emoji");
+  });
+
+  let randomSquare = squares[Math.floor(Math.random() * squares.length)]; // Fixed typo and ensured correct selection
+  randomSquare.classList.add("emoji");
+  hitPosition = randomSquare.id;
+}
+
+squares.forEach((square) => {
+  square.addEventListener("mousedown", () => {
+    if (square.id === hitPosition) {
+      result++;
+      score.textContent = result;
+      hitPosition = null;
+    }
+  });
+});
+
+function moveEmoji() {
+  timerId = setInterval(randomSquare, 800);
+}
+
+function countDown() {
+  currentTime--;
+  timeLeft.textContent = currentTime;
+
+  if (currentTime === 0) {
+    clearInterval(countDownTimerId); // Stop the countdown
+    clearInterval(timerId); // Stop the emoji movement
+    alert(`Game Over! Your final score is ${result}`);
+  }
+}
+
+// Start game
+moveEmoji();
+countDownTimerId = setInterval(countDown, 1000); // Start the countdown
+
+    </script>
+  </body>
+</html>

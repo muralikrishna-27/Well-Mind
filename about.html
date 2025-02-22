@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - WellMind Mental Health Support</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <style>
+        /* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    padding: 8rem 2rem 4rem;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Main Content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Mission Section */
+.mission-section {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.feature-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Documentary Section */
+.documentary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.documentary-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.documentary-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.documentary-card h4, .documentary-card p {
+    padding: 1rem;
+}
+
+.learn-more {
+    display: inline-block;
+    margin: 0 1rem 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more:hover {
+    background-color: #2980b9;
+}
+
+/* Research Section */
+.research-basis {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.research-content ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+/* Professional Grid */
+.professional-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.professional-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+.emergency-banner {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 6rem 1rem 3rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar fixed-top">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            <span class="logo-text">Well Mind</span>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#games" class="active">Games</a></li>
+            <li><a href="resources.html" class="active">Resources</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+            
+            
+        </ul>
+        
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <h1>Empowering Mental Wellness Through Technology</h1>
+        <p>Providing accessible, personalized mental health support when you need it most</p>
+    </div>
+
+    <main class="container">
+        <section class="mission-section">
+            <h2>Our Mission</h2>
+            <p>At WellMind, we believe everyone deserves access to quality mental health support. Our AI-driven platform combines cutting-edge technology with evidence-based psychological practices to provide personalized support, guidance, and resources for your mental wellness journey.</p>
+        </section>
+
+        <section class="features-grid">
+            <div class="feature-card">
+                <h3>AI-Powered Support</h3>
+                <p>24/7 conversational AI support using advanced natural language processing to provide personalized guidance and coping strategies.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Mood Tracking</h3>
+                <p>Interactive tools to track your emotional well-being over time, helping you identify patterns and triggers.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Self-Assessment</h3>
+                <p>Evidence-based psychological assessments to help you better understand your mental health needs.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Crisis Management</h3>
+                <p>Immediate support and resources during crisis situations, with direct connections to professional help.</p>
+            </div>
+        </section>
+
+        <section class="educational-resources">
+            <h2>Educational Resources</h2>
+            <div class="documentary-section">
+                <h3>Recommended Documentaries</h3>
+                <div class="documentary-grid">
+                    <div class="documentary-card">
+                        <!-- <img src="/api/placeholder/300/200" alt="The Mind, Explained"> -->
+                        <h4>The Mind, Explained</h4>
+                        <p>Netflix series exploring how the brain works and various mental health topics.</p>
+                        <a href="https://en.wikipedia.org/wiki/The_Mind,_Explained" class="learn-more">Learn More</a>
+                    </div>
+                    <div class="documentary-card">
+                        <!-- <img src="/api/placeholder/300/200" alt="Anxiety Disorders"> -->
+                        <h4>Understanding Anxiety</h4>
+                        <p>PBS documentary on the science behind anxiety disorders and treatment approaches.</p>
+                        <a href="https://newsinhealth.nih.gov/2016/03/understanding-anxiety-disorders" class="learn-more">Learn More</a>
+                    </div>
+                    <div class="documentary-card">
+                        <!-- <img src="/api/placeholder/300/200" alt="Depression Documentary"> -->
+                        <h4>Depression: Out of the Shadows</h4>
+                        <p>Comprehensive look at depression, its impact, and recovery stories.</p>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="research-basis">
+            <h2>Our Research-Based Approach</h2>
+            <div class="research-content">
+                <p>WellMind's interventions and support strategies are grounded in:</p>
+                <ul>
+                    <li>Cognitive Behavioral Therapy (CBT)</li>
+                    <li>Mindfulness-Based Stress Reduction (MBSR)</li>
+                    <li>Positive Psychology</li>
+                    <li>Evidence-based Crisis Intervention Techniques</li>
+                </ul>
+                <p>Our team of mental health professionals and AI experts continuously update our platform based on the latest psychological research and best practices.</p>
+            </div>
+        </section>
+
+        <!-- <section class="team-section">
+            <h2>Professional Support Network</h2>
+            <p>While our AI provides valuable support, we maintain partnerships with licensed mental health professionals for cases requiring human intervention. Our network includes:</p>
+            <div class="professional-grid">
+                <div class="professional-card">
+                    <h4>Licensed Therapists</h4>
+                    <p>Available for referrals and direct consultation</p>
+                </div>
+                <div class="professional-card">
+                    <h4>Crisis Counselors</h4>
+                    <p>24/7 emergency support availability</p>
+                </div>
+                <div class="professional-card">
+                    <h4>Psychiatrists</h4>
+                    <p>For medication management when needed</p>
+                </div>
+            </div>
+        </section> -->
+    </main>
+
+    <footer class="footer">
+        <div class="emergency-banner">
+            <h3>Need Immediate Help?</h3>
+            <p>24/7 Crisis Hotline: 988 | Text HOME to 741741</p>
+        </div>
+        <div class="footer-content">
+            <p>&copy; 2024 WellMind. Supporting mental wellness through technology.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/02/22/01/20250222011935-SP6NHPGM.js"></script>
+</body>
+</html>

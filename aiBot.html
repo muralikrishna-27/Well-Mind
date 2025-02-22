@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WellMind - AI Mental Health Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <style>
+        :root {
+            --primary-color: #4e89ae;
+            --secondary-color: #43658b;
+            --light-color: #f9f9f9;
+            --dark-color: #333;
+            --success-color: #28a745;
+            --bot-msg-bg: #e6f2ff;
+            --user-msg-bg: #f0f0f0;
+        }
+        body {
+            
+            background-color: #0A192F;
+            height: 100vh;
+            width: ;
+            display: flex;
+            flex-direction: column;
+            color: var(--dark-color);
+        }
+        
+        .container1 {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        
+        header{
+            background-color: #1565C0;
+            color: #E3F2FD;
+            text-align: center;
+            padding: 20px 0;
+            /* border-radius: 10px; */
+            margin-bottom: 5px;
+            box-shadow: 0 4ox 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+
+        .container1{
+            background-color: #0A192F;
+        }
+        #back1{
+            display: flex;
+            justify-content: flex-start;
+        }
+        .nav-btn1{
+            background-color: #1565C0;
+            border: none;
+            color: #E3F2FD;
+            /* padding: 5px 20px; */
+            padding-top: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 0;
+        }
+        
+        .chat-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .chat-header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-header h2 {
+            font-size: 1.2rem;
+        }
+        
+        .chat-header button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .chat-header button:hover {
+            text-decoration: underline;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 0.8rem 1rem;
+            border-radius: 15px;
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .bot-message {
+            align-self: flex-start;
+            background-color: var(--bot-msg-bg);
+            border-bottom-left-radius: 5px;
+        }
+        
+        .user-message {
+            align-self: flex-end;
+            background-color: var(--user-msg-bg);
+            border-bottom-right-radius: 5px;
+        }
+        
+        .message-time {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-top: 5px;
+            text-align: right;
+        }
+        
+        .bot-typing {
+            align-self: flex-start;
+            background-color: var(--bot-msg-bg);
+            border-radius: 15px;
+            border-bottom-left-radius: 5px;
+            padding: 0.8rem 1rem;
+            display: none;
+        }
+        
+        .typing-animation {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #666;
+            border-radius: 50%;
+            animation: typingAnimation 1.5s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) { animation-delay: 0s; }
+        .typing-dot:nth-child(2) { animation-delay: 0.3s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.6s; }
+        
+        @keyframes typingAnimation {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 1rem;
+            background-color: #f0f0f0;
+            gap: 0.5rem;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            font-size: 1rem;
+        }
+        
+        .chat-input input:focus {
+            border-color: var(--primary-color);
+        }
+        
+        .chat-input button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 0 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chat-input button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .chat-input button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .info-section {
+            margin-top: 1.5rem;
+        }
+        
+        .disclaimer {
+            background-color: #fff3cd;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .resources {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        
+        .resources h3 {
+            margin-bottom: 0.8rem;
+            color: var(--secondary-color);
+        }
+        
+        .resources ul {
+            padding-left: 1.5rem;
+        }
+        
+        .resources li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .resources a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .resources a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--dark-color);
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            main {
+                flex-direction: row;
+                gap: 1.5rem;
+            }
+            
+            .chat-container {
+                flex: 2;
+            }
+            
+            .info-section {
+                flex: 1;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar fixed-top">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            <span class="logo-text">Well Mind</span>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#games" class="active">Games</a></li>
+            <li><a href="resources.html" class="active">Resources</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+            
+            
+        </ul>
+        
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    
+    <!-- <div class="container1" style="padding-top: 120px;">
+        <h3 style="color: white;">Chat with WellMind AI <i class="fa-solid fa-robot"></i></h3>
+
+        <main>
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2>Your Conversation</h2>
+                    <button id="clearChat" onclick="clearConversation()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                        Clear Chat
+                    </button>
+                </div>
+                <div id="chatMessages" class="chat-messages">
+                    <!-- Messages will be inserted here -->
+                    <!-- <div class="message bot-message">
+                        <div>Hello! I'm MindCare, your AI mental wellness assistant. How are you feeling today?</div>
+                        <div class="message-time">Just now</div>
+                    </div>
+                    <div id="botTyping" class="bot-typing">
+                        <div class="typing-animation">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="userInput" placeholder="Type your message here..." aria-label="Type your message">
+                    <button id="sendBtn" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <div class="disclaimer">
+                    <strong>Important:</strong> This AI chatbot is for informational purposes only and not a substitute for professional mental health care. If you're experiencing a crisis, please contact a mental health professional or emergency services immediately.
+                </div>
+                <div class="resources">
+                    <h3>Mental Health Resources</h3>
+                    <ul>
+                        <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
+                        <li><strong>National Suicide Prevention Lifeline:</strong> 1-800-273-8255</li>
+                        <li><strong>SAMHSA's National Helpline:</strong> 1-800-662-4357</li>
+                        <li><a href="https://www.nimh.nih.gov/health/find-help" target="_blank">Find Mental Health Services</a></li>
+                    </ul>
+                </div>
+            </div>
+        </main> -->
+    <!-- </div>  -->
+    <p style="background-color: #1565C0; color: #E3F2FD;"><marquee scrollamount="2">Play the games that we provided in home page to divert your mood. <a href="index.html" style="color: #E3F2FD;">Home</a> </marquee></p>
+    <footer>
+        &copy; 2025 WELLMIND - AI Mental Health Support | For informational purposes only
+    </footer>
+
+    <!-- <script>
+        // Constants and variables
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const botTyping = document.getElementById('botTyping');
+        let conversations = [];
+         -->
+        <!-- // Load conversation history from local storage
+        function loadConversation() {
+            const savedConversation = localStorage.getItem('mindCareConversation');
+            if (savedConversation) {
+                conversations = JSON.parse(savedConversation);
+                
+                // Display up to last 15 messages to prevent overloading
+                const recentMessages = conversations.slice(-15);
+                
+                // Clear default welcome message if we have history
+                if (recentMessages.length > 0) {
+                    chatMessages.innerHTML = '';
+                }
+                
+                // Render saved messages
+                recentMessages.forEach(msg => {
+                    const messageElement = createMessageElement(
+                        msg.text,
+                        msg.sender,
+                        new Date(msg.timestamp).toLocaleTimeString()
+                    );
+                    chatMessages.appendChild(messageElement);
+                });
+                
+                scrollToBottom();
+            }
+        }
+        
+        // Save conversation to local storage
+        function saveConversation() {
+            localStorage.setItem('mindCareConversation', JSON.stringify(conversations));
+        }
+        
+        // Clear conversation
+        function clearConversation() {
+            if (confirm('Are you sure you want to clear this conversation? This cannot be undone.')) {
+                conversations = [];
+                localStorage.removeItem('mindCareConversation');
+                chatMessages.innerHTML = '';
+                
+                // Add welcome message back
+                const welcomeMsg = createMessageElement(
+                    "Hello! I'm MindCare, your AI mental wellness assistant. How are you feeling today?",
+                    'bot',
+                    'Just now'
+                );
+                chatMessages.appendChild(welcomeMsg);
+            }
+        }
+        
+        // Create message element
+        function createMessageElement(text, sender, time) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+            
+            const messageContent = document.createElement('div');
+            messageContent.innerHTML = text;
+            
+            const messageTime = document.createElement('div');
+            messageTime.classList.add('message-time');
+            messageTime.textContent = time;
+            
+            messageDiv.appendChild(messageContent);
+            messageDiv.appendChild(messageTime);
+            
+            return messageDiv;
+        }
+        
+        // Add message to UI and storage
+        function addMessage(text, sender) {
+            const timestamp = new Date();
+            const timeString = timestamp.toLocaleTimeString();
+            
+            // Create and add message element
+            const messageElement = createMessageElement(text, sender, timeString);
+            chatMessages.appendChild(messageElement);
+            
+            // Save message in our array
+            conversations.push({
+                text: text,
+                sender: sender,
+                timestamp: timestamp.toISOString()
+            });
+            
+            // Save to local storage
+            saveConversation();
+            
+            // Auto-scroll to bottom
+            scrollToBottom();
+        }
+        
+        // Scroll chat to bottom
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Show typing indicator
+        function showTypingIndicator() {
+            botTyping.style.display = 'block';
+            scrollToBottom();
+        }
+        
+        // Hide typing indicator
+        function hideTypingIndicator() {
+            botTyping.style.display = 'none';
+        }
+        
+        // Generate bot response based on user input
+        function generateResponse(userText) {
+            // Normalize text for pattern matching
+            const text = userText.toLowerCase();
+            
+            // Common greeting patterns
+            if (/^(hi|hello|hey|greetings)/.test(text)) {
+                return "Hello! How are you feeling today? I'm here to listen and help however I can.";
+            }
+            
+            // Feeling patterns - negative
+            if (/^(i('m| am) (feeling |))(sad|depressed|down|unhappy|miserable)/.test(text) || 
+                /^(i feel|feeling) (sad|depressed|down|unhappy|miserable)/.test(text)) {
+                return "I'm sorry to hear you're feeling down. It's okay to feel this way sometimes. Would you like to talk about what might be causing these feelings? Sometimes identifying specific triggers can be a helpful first step.";
+            }
+            
+            if (/^(i('m| am) (feeling |))(anxious|worried|stressed|overwhelmed|panicked)/.test(text) || 
+               /^(i feel|feeling) (anxious|worried|stressed|overwhelmed|panicked)/.test(text)) {
+                return "It sounds like you're experiencing some anxiety. This is very common, and there are techniques that might help in the moment. Would you like to try a quick breathing exercise? Or perhaps you'd like to talk about what's causing these feelings?";
+            }
+            
+            if (/^(i('m| am) (feeling |))(angry|mad|frustrated|irritated)/.test(text) || 
+               /^(i feel|feeling) (angry|mad|frustrated|irritated)/.test(text)) {
+                return "I understand you're feeling frustrated right now. It's a natural emotion. Could you tell me more about what triggered these feelings? Sometimes expressing and acknowledging anger in a healthy way can help process it.";
+            }
+            
+            // Feeling patterns - positive
+            if (/^(i('m| am) (feeling |))(happy|good|great|excellent|awesome|fine)/.test(text) || 
+               /^(i feel|feeling) (happy|good|great|excellent|awesome|fine)/.test(text)) {
+                return "I'm glad to hear you're feeling well! What's been contributing to your positive mood lately? Recognizing what brings us joy can help us cultivate more positive experiences.";
+            }
+            
+            // Suicide or self-harm mentions
+            if (/suicide|kill myself|harm myself|end my life|don't want to live/.test(text)) {
+                return "I'm really concerned about what you're sharing. If you're having thoughts of harming yourself, please reach out to a crisis helpline immediately. In the US, you can text HOME to 741741 for the Crisis Text Line, or call 1-800-273-8255 for the National Suicide Prevention Lifeline. These services have trained counselors available 24/7. Your life matters, and help is available.";
+            }
+            
+            // Sleep issues
+            if (/can't sleep|trouble sleeping|insomnia|sleep problems/.test(text)) {
+                return "Sleep difficulties can be really challenging and often connect to our mental wellbeing. Some things that might help include maintaining a regular sleep schedule, creating a relaxing bedtime routine, limiting screen time before bed, and making sure your sleep environment is comfortable. Would you like to talk more about what might be affecting your sleep?";
+            }
+            
+            // Asking for specific coping techniques
+            if (/how (can|do) i (cope|deal|manage|handle)/.test(text) || /coping (technique|skill|strategy)/.test(text)) {
+                return "There are many effective coping strategies for managing difficult emotions. Some approaches include: deep breathing exercises, mindfulness meditation, physical activity, journaling, talking with supportive people, and progressive muscle relaxation. Would you like me to explain any of these techniques in more detail?";
+            }
+            
+            // Questions about therapy
+            if (/therapy|therapist|counseling|counselor/.test(text) && /find|get|start|begin/.test(text)) {
+                return "Finding a therapist is a great step toward mental wellness. You might start by checking with your insurance provider about coverage, asking your doctor for referrals, or using online directories like Psychology Today's therapist finder. Many therapists offer free initial consultations to see if they're a good fit for you. Would you like more specific information about types of therapy?";
+            }
+            
+            // Questions about resources
+            if (/resources|help|support/.test(text) && /mental health|anxiety|depression/.test(text)) {
+                return "There are many excellent mental health resources available. Organizations like NAMI (National Alliance on Mental Illness) offer education and support groups. Apps like Headspace and Calm can help with meditation and mindfulness. Websites like MentalHealth.gov provide reliable information. Remember, if you're in crisis, hotlines like the Crisis Text Line (text HOME to 741741) are available 24/7.";
+            }
+            
+            // Help understanding emotions
+            if (/why (do|am) i (feel|feeling)/.test(text) || /understand my (feelings|emotions)/.test(text)) {
+                return "Understanding our emotions can be challenging but valuable work. Our feelings often serve as important signals about our needs and experiences. Sometimes they connect to past experiences, current stressors, or even biological factors. Would it help to explore specific situations where these feelings come up? Patterns can sometimes reveal important insights.";
+            }
+            
+            // Gratitude or thanks
+            if (/thank you|thanks|appreciate it/.test(text)) {
+                return "You're welcome! I'm glad if our conversation has been helpful. Is there anything else you'd like to talk about regarding your mental wellbeing?";
+            }
+            
+            // Goodbye
+            if (/bye|goodbye|that's all|end conversation/.test(text)) {
+                return "Take care of yourself! Remember that it's okay to reach out for support when you need it. I'm here if you want to chat again.";
+            }
+            
+            // Default responses for when no pattern matches
+            const defaultResponses = [
+                "Could you tell me more about that? I'm here to listen.",
+                "Thank you for sharing. How long have you been feeling this way?",
+                "I understand this is important to you. Would you like to explore this topic further?",
+                "That's interesting. How does this situation affect your daily life?",
+                "I appreciate you opening up. What do you think might help in this situation?",
+                "I'm here to support you. What would be most helpful for us to focus on right now?"
+            ];
+            
+            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+        }
+        
+        // Handle send button click
+        function handleSend() {
+            const text = userInput.value.trim();
+            if (text === '') return;
+            
+            // Disable input while processing
+            userInput.value = '';
+            userInput.disabled = true;
+            sendBtn.disabled = true;
+            
+            // Add user message
+            addMessage(text, 'user');
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            // Simulate AI thinking time (between 1-3 seconds)
+            const thinkingTime = Math.floor(Math.random() * 2000) + 1000;
+            
+            setTimeout(() => {
+                // Hide typing indicator
+                hideTypingIndicator();
+                
+                // Generate and add bot response
+                const botResponse = generateResponse(text);
+                addMessage(botResponse, 'bot');
+                
+                // Re-enable input
+                userInput.disabled = false;
+                sendBtn.disabled = false;
+                userInput.focus();
+            }, thinkingTime);
+        }
+        
+        // Event listeners
+        sendBtn.addEventListener('click', handleSend);
+        
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleSend();
+            }
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadConversation();
+            userInput.focus();
+        }); -->
+    </script>
+    
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/02/22/01/20250222011935-SP6NHPGM.js"></script>
+    
+</body>
+</html>

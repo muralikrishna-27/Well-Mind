@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WellMind</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <style>
+        body{
+            background-color: #0A192F;
+        }
+        header{
+            background-color: #1565C0;
+            color: #E3F2FD;
+            text-align: center;
+            padding: 20px 0;
+            /* border-radius: 10px; */
+            margin-bottom: 5px;
+            box-shadow: 0 4ox 8px rgba(0, 0, 0, 0.1);
+        }
+        .container1{
+            background-color: #0A192F;
+        }
+        #back1{
+            display: flex;
+            justify-content: flex-start;
+        }
+        .nav-btn1{
+            background-color: #1565C0;
+            border: none;
+            color: #E3F2FD;
+            /* padding: 5px 20px; */
+            padding-top: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .breathing-container {      
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            padding-bottom: 30px;
+        }
+
+        .breathing-circle {     
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #42A5F5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            transition: transform 4s ease, background-color 4s ease;
+        }       
+
+        .breathing-circle.inhale {      
+            transform: scale(1.5);
+            background-color: #1565C0;
+        }
+
+        .breathing-circle.exhale {      
+            transform: scale(1);
+            background-color: #42A5F5;
+        }
+
+        .breathing-text {       
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+
+        .breathing-controls button {        
+            background-color: #1565C0;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0 10px;
+            margin-top: 40px;
+        }
+
+/* Responsive Design */
+        @media (max-width: 768px) {     
+        .mood-container {
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+    
+        .mood-btn {
+            flex: 1 1 30%;
+        }
+    
+        .mood-emoji {
+            font-size: 2.5rem;
+        }
+    
+        .breathing-circle {
+            width: 150px;
+            height: 150px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar fixed-top">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            <span class="logo-text">Well Mind</span>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#games" class="active">Games</a></li>
+            <li><a href="resources.html" class="active">Resources</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+            
+            
+        </ul>
+        
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <div class="container1" style="padding-top: 110px;">
+
+        <!-- breathing -->
+        <section id="breathing" class="section">
+            <h2 style="color: #E3F2FD; padding-left: 30px;">Guided Breathing Exercise <i class="fa-solid fa-lungs"></i></h2>
+            <p style="color: #E3F2FD; padding-left: 30px;">Take a moment to relax and breathe</p>
+            
+            <div class="breathing-container">
+                <div class="breathing-text" id="breathing-instruction" style="color: #E3F2FD;">
+                    Ready to begin
+                </div>
+                
+                <div class="breathing-circle" id="breathing-circle">
+                    <span id="breathing-count">5-5-5</span>
+                </div>
+                
+                <div class="breathing-controls">
+                    <button id="start-breathing">Start Exercise</button>
+                    <button id="stop-breathing" style="display: none;">Stop</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="fixed-bottom">
+        &copy; 2025 WELLMIND - AI Mental Health Support | For informational purposes only
+    </footer>
+
+
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/02/22/01/20250222011935-SP6NHPGM.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="breathingExe.js"></script>
+</body>
+</html>
